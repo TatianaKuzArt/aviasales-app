@@ -1,0 +1,43 @@
+.cardTicket {
+  display: grid;
+  grid-row-gap: 10px;
+  margin: 0;
+  padding: 20px 0 0 0;
+  list-style-type: none;
+}
+.showMoreButton {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  margin: 20px 0;
+  background-color: #2196f3;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+
+  &:hover {
+    background-color: #1976d2;
+  }
+
+  &:active {
+    background-color: #1565c0;
+  }
+}
+.noResults {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}

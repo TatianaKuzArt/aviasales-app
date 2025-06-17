@@ -1,0 +1,13 @@
+.main {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: center;
+  font-family: 'Open Sans', sans-serif;
+}
+.logo {
+  display: block;
+  margin: 20px 500px;
+  max-width: 100%;
+  height: auto;
+}
