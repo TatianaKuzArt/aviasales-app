@@ -44,6 +44,11 @@ const TicketList = () => {
     setVisibleCount(prev => prev + 5);
   };
 
+  const generateKey = (ticket) => {
+    const [seg0, seg1] = ticket.segments;
+    return `${ticket.price}-${seg0.date}-${seg1.date}-${seg0.stops.join(',')}-${seg1.stops.join(',')}`;
+  };
+
   return (
     <>
       {checkedStops.length === 0 ? (
@@ -53,8 +58,8 @@ const TicketList = () => {
       ) : (
         <>
           <ul className={styles.cardTicket}>
-            {visibleTickets.map((ticket, index) => (
-              <li key={index}>
+            {visibleTickets.map(ticket => (
+              <li key={generateKey(ticket)}>
                 <TicketCard {...ticket} />
               </li>
             ))}

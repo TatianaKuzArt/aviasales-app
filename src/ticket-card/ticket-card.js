@@ -36,28 +36,31 @@ const TicketCard = ({ price, carrier, segments }) => {
       </div>
 
       <div className={styles.infoGrid}>
-        {segments.map((segment, index) => (
-          <React.Fragment key={index}>
-            <div className={styles.infoBlock}>
-              <div className={styles.label}>{`${segment.origin} - ${segment.destination}`}</div>
-              <div className={styles.value}>{getDate(segment.date, segment.duration)}</div>
-            </div>
-            <div className={styles.infoBlock}>
-              <div className={styles.label}>В ПУТИ</div>
-              <div className={styles.value}>{formatDuration(segment.duration)}</div>
-            </div>
-            <div className={styles.infoBlock}>
-              <div className={styles.label}>
-                {segment.stops.length === 0
-                  ? 'БЕЗ ПЕРЕСАДОК'
-                  : `${segment.stops.length} ПЕРЕСАДК${segment.stops.length > 1 ? 'И' : 'А'}`}
+        {segments.map((segment) => {
+          const segmentKey = `${segment.origin}-${segment.destination}-${segment.date}-${segment.duration}`;
+          return (
+            <React.Fragment key={segmentKey}>
+              <div className={styles.infoBlock}>
+                <div className={styles.label}>{`${segment.origin} - ${segment.destination}`}</div>
+                <div className={styles.value}>{getDate(segment.date, segment.duration)}</div>
               </div>
-              <div className={styles.value}>
-                {segment.stops.length > 0 ? segment.stops.join(', ') : '-'}
+              <div className={styles.infoBlock}>
+                <div className={styles.label}>В ПУТИ</div>
+                <div className={styles.value}>{formatDuration(segment.duration)}</div>
               </div>
-            </div>
-          </React.Fragment>
-        ))}
+              <div className={styles.infoBlock}>
+                <div className={styles.label}>
+                  {segment.stops.length === 0
+                    ? 'БЕЗ ПЕРЕСАДОК'
+                    : `${segment.stops.length} ПЕРЕСАДК${segment.stops.length > 1 ? 'И' : 'А'}`}
+                </div>
+                <div className={styles.value}>
+                  {segment.stops.length > 0 ? segment.stops.join(', ') : '-'}
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );
